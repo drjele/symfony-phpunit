@@ -2,4 +2,6 @@
 /vendor/
 
 /.idea/
+
+/.phpcs-cache
 ###> generic ###
