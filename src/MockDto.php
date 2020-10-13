@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 /*
- * Copyright (c) Constantin Adrian Jeledintan
+ * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\Utility\Phpunit;
+namespace Drjele\SymfonyPhpunit;
 
 use Closure;
 

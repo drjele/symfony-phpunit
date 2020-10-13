@@ -1,15 +1,16 @@
 {
-    "name": "drjele/utility-phpunit",
-    "type": "symfony-bundle",
+    "name": "drjele/symfony-phpunit",
+    "type": "library",
     "description": "Library used to make writing phpunit tests easier",
     "keywords": [
+        "symfony",
         "phpunit"
     ],
-    "homepage": "https://gitlab.com/drjele-utility/phpunit",
-    "license": "proprietary",
+    "homepage": "https://gitlab.com/drjele-symfony/phpunit",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Constantin Adrian Jeledintan",
+            "name": "Adrian Jeledintan",
             "email": "adrian.jeledintan@gmail.com"
         }
     ],
@@ -30,7 +31,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Drjele\\Utility\\Phpunit\\": "src/"
+            "Drjele\\SymfonyPhpunit\\": "src/"
         }
     },
     "scripts": {
@@ -48,6 +49,9 @@
     "prefer-stable": true,
     "extra": {
         "exclude": [
+            "/scripts",
+            "/.php_cs.dist",
+            "/phpcs.xml.dist"
         ]
     }
 }

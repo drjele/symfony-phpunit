@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 /*
- * Copyright (c) Constantin Adrian Jeledintan
+ * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\Utility\Phpunit\Mock;
+namespace Drjele\SymfonyPhpunit\Mock;
 
-use Drjele\Utility\Phpunit\Contract\MockDtoInterface;
-use Drjele\Utility\Phpunit\MockDto;
+use Drjele\SymfonyPhpunit\Contract\MockDtoInterface;
+use Drjele\SymfonyPhpunit\MockDto;
 use Mockery\MockInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\String\UnicodeString;

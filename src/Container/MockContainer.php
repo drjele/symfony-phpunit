@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 /*
- * Copyright (c) Constantin Adrian Jeledintan
+ * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\Utility\Phpunit\Container;
+namespace Drjele\SymfonyPhpunit\Container;
 
-use Drjele\Utility\Phpunit\Contract\MockDtoInterface;
-use Drjele\Utility\Phpunit\Exception\Exception;
-use Drjele\Utility\Phpunit\MockDto;
+use Drjele\SymfonyPhpunit\Contract\MockDtoInterface;
+use Drjele\SymfonyPhpunit\Exception\Exception;
+use Drjele\SymfonyPhpunit\MockDto;
 use Mockery;
 use Mockery\MockInterface;
 

@@ -4,7 +4,7 @@
 
 ## How to use
  * extend **AbstractTestCase** or **AbstractKernelTestCase** if you need the symfony kernel
- * **Drjele\Utility\Phpunit\Mock** contains generic mocks
+ * **Drjele\SymfonyPhpunit\Mock** contains generic mocks
 
 ## Example
 
@@ -12,9 +12,9 @@
 namespace Acme\Test\Foo\Service;
 
 use Acme\Foo\CreateService;
-use Drjele\Utility\Phpunit\Mock\ManagerRegistryMock;
-use Drjele\Utility\Phpunit\MockDto;
-use Drjele\Utility\Phpunit\TestCase\AbstractTestCase;
+use Drjele\SymfonyPhpunit\Mock\ManagerRegistryMock;
+use Drjele\SymfonyPhpunit\MockDto;
+use Drjele\SymfonyPhpunit\TestCase\AbstractTestCase;
 
 final class CreateServiceTest extends AbstractTestCase
 {
