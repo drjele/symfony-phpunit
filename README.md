@@ -2,6 +2,8 @@
 
 **You may clone and modify it as you wish**.
 
+Any suggestions are welcomed.
+
 ## How to use
  * extend **AbstractTestCase** or **AbstractKernelTestCase** if you need the symfony kernel
  * **Drjele\SymfonyPhpunit\Mock** contains generic mocks
