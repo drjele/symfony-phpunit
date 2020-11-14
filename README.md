@@ -1,19 +1,20 @@
 # Phpunit
 
-**You may clone and modify it as you wish**.
+**You may fork and modify it as you wish**.
 
 Any suggestions are welcomed.
 
 ## How to use
- * extend **AbstractTestCase** or **AbstractKernelTestCase** if you need the symfony kernel
- * **Drjele\SymfonyPhpunit\Mock** contains generic mocks
+ * extend **\Drjele\SymfonyPhpunit\TestCase\AbstractTestCase** or **\Drjele\SymfonyPhpunit\TestCase\AbstractKernelTestCase** if you need the symfony kernel.
+ * **Drjele\SymfonyPhpunit\Mock** contains generic mocks.
 
 ## Example
 
 ```php
 namespace Acme\Test\Foo\Service;
 
-use Acme\Foo\CreateService;
+use Acme\Foo\Repository\FooRepository;
+use Acme\Foo\Service\CreateService;
 use Drjele\SymfonyPhpunit\Mock\ManagerRegistryMock;
 use Drjele\SymfonyPhpunit\MockDto;
 use Drjele\SymfonyPhpunit\TestCase\AbstractTestCase;
