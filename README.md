@@ -5,7 +5,7 @@
 Any suggestions are welcomed.
 
 ## How to use
- * extend **\Drjele\SymfonyPhpunit\TestCase\AbstractTestCase** or **\Drjele\SymfonyPhpunit\TestCase\AbstractKernelTestCase** if you need the symfony kernel.
+ * Extend **\Drjele\SymfonyPhpunit\TestCase\AbstractTestCase** or **\Drjele\SymfonyPhpunit\TestCase\AbstractKernelTestCase** if you need the symfony kernel.
  * **Drjele\SymfonyPhpunit\Mock** contains generic mocks.
 
 ## Example
