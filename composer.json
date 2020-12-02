@@ -48,8 +48,10 @@
     "extra": {
         "exclude": [
             "/scripts",
+            "/tests",
             "/.php_cs.dist",
-            "/phpcs.xml.dist"
+            "/phpcs.xml.dist",
+            "/phpunit.xml.dist"
         ]
     }
 }
