@@ -13,11 +13,8 @@ use Closure;
 class MockDto
 {
     private string $class;
-
     private array $construct;
-
     private bool $partial;
-
     private ?Closure $onCreate;
 
     public function __construct(
