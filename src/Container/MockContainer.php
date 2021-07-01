@@ -54,7 +54,7 @@ class MockContainer
         return $this;
     }
 
-    public function close()
+    public function close(): void
     {
         $this->mockDtos = [];
 
@@ -82,7 +82,6 @@ class MockContainer
                 case $dependency instanceof MockDtoInterface || is_a($dependency, MockDtoInterface::class, true):
                     $mockedDependency = $this->getOrCreateMock($dependency::getMockDto());
                     break;
-
                 default:
                     $mockedDependency = $dependency;
                     break;

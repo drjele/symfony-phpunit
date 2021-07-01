@@ -21,7 +21,7 @@ class EventDispatcherInterfaceMock implements MockDtoInterface
             EventDispatcherInterface::class,
             [],
             false,
-            function (MockInterface $mock) {
+            function (MockInterface $mock): void {
                 $mock->shouldReceive('dispatch')
                     ->byDefault()
                     ->andReturnSelf();

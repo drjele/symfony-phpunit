@@ -21,7 +21,7 @@ class ManagerRegistryMock implements MockDtoInterface
             ManagerRegistry::class,
             [],
             false,
-            function (MockInterface $mock) {
+            function (MockInterface $mock): void {
                 $mock->shouldReceive('getManager')
                     ->byDefault()
                     ->andReturnSelf();
