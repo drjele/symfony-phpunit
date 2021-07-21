@@ -49,6 +49,18 @@ class ManagerRegistryMock implements MockDtoInterface
                 $mock->shouldReceive('rollback')
                     ->byDefault()
                     ->andReturnSelf();
+
+                $mock->shouldReceive('getClassMetaData')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $mock->shouldReceive('setIdGeneratorType')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $mock->shouldReceive('setIdGenerator')
+                    ->byDefault()
+                    ->andReturnSelf();
             }
         );
     }
