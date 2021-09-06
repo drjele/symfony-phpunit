@@ -22,7 +22,7 @@ class MockContainer
     public function registerMockDto(MockDto $mockDto): self
     {
         if (isset($this->mockDtos[$mockDto->getClass()])) {
-            throw new Exception(sprintf('Mock dto already registered for class "%s"!', $mockDto->getClass()));
+            throw new Exception(\sprintf('mock dto already registered for class `%s`', $mockDto->getClass()));
         }
 
         $this->mockDtos[$mockDto->getClass()] = $mockDto;
@@ -34,7 +34,7 @@ class MockContainer
     {
         if (!isset($this->mocks[$class])) {
             if (!isset($this->mockDtos[$class])) {
-                throw new Exception(sprintf('No mock dto found for class "%s"!', $class));
+                throw new Exception(\sprintf('no mock dto found for class `%s`', $class));
             }
 
             $this->createMock($this->mockDtos[$class]);
@@ -46,7 +46,7 @@ class MockContainer
     public function registerMock(string $class, MockInterface $mock): self
     {
         if (isset($this->mocks[$class])) {
-            throw new Exception(sprintf('Mock already registered for class "%s"!', $class));
+            throw new Exception(\sprintf('mock already registered for class `%s`', $class));
         }
 
         $this->mocks[$class] = $mock;
@@ -79,7 +79,7 @@ class MockContainer
                 case $dependency instanceof MockDto:
                     $mockedDependency = $this->getOrCreateMock($dependency);
                     break;
-                case $dependency instanceof MockDtoInterface || is_a($dependency, MockDtoInterface::class, true):
+                case $dependency instanceof MockDtoInterface || \is_a($dependency, MockDtoInterface::class, true):
                     $mockedDependency = $this->getOrCreateMock($dependency::getMockDto());
                     break;
                 default:

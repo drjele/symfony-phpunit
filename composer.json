@@ -21,12 +21,10 @@
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^2.1",
-        "friendsofphp/php-cs-fixer": "^3.0",
+        "friendsofphp/php-cs-fixer": "^3.1",
         "squizlabs/php_codesniffer": "^3.6",
         "symfony/framework-bundle": "^4.0|^5.0"
     },
-    "repositories": [
-    ],
     "autoload": {
         "psr-4": {
             "Drjele\\SymfonyPhpunit\\": "src/"
@@ -45,6 +43,9 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "exclude": [
             "/scripts",

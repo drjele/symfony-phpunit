@@ -25,7 +25,7 @@ class SluggerInterfaceMock implements MockDtoInterface
             function (MockInterface $mock): void {
                 $mock->shouldReceive('slug')
                     ->byDefault()
-                    ->andReturn(new UnicodeString(uniqid()));
+                    ->andReturn(new UnicodeString(\uniqid()));
             }
         );
     }
