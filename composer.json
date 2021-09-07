@@ -4,7 +4,8 @@
     "description": "Library used to make writing phpunit tests easier",
     "keywords": [
         "symfony",
-        "phpunit"
+        "phpunit",
+        "mockery"
     ],
     "homepage": "https://gitlab.com/drjele-symfony/phpunit",
     "license": "MIT",
