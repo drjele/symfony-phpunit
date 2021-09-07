@@ -6,8 +6,8 @@ Any suggestions are welcomed.
 
 ## How to use
 
-* Extend **\Drjele\SymfonyPhpunit\TestCase\AbstractTestCase** or **\Drjele\SymfonyPhpunit\TestCase\AbstractKernelTestCase** if you need the symfony kernel.
-* **Drjele\SymfonyPhpunit\Mock** contains generic mocks.
+* Extend **\Drjele\Symfony\Phpunit\TestCase\AbstractTestCase** or **\Drjele\Symfony\Phpunit\TestCase\AbstractKernelTestCase** if you need the symfony kernel.
+* **Drjele\Symfony\Phpunit\Mock** contains generic mocks.
 
 ## Example
 
@@ -16,9 +16,9 @@ namespace Acme\Test\Foo\Service;
 
 use Acme\Foo\Repository\FooRepository;
 use Acme\Foo\Service\CreateService;
-use Drjele\SymfonyPhpunit\Mock\ManagerRegistryMock;
-use Drjele\SymfonyPhpunit\MockDto;
-use Drjele\SymfonyPhpunit\TestCase\AbstractTestCase;
+use Drjele\Symfony\Phpunit\Mock\ManagerRegistryMock;
+use Drjele\Symfony\Phpunit\MockDto;
+use Drjele\Symfony\Phpunit\TestCase\AbstractTestCase;
 
 final class CreateServiceTest extends AbstractTestCase
 {

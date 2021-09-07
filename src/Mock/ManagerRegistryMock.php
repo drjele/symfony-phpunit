@@ -6,11 +6,11 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\SymfonyPhpunit\Mock;
+namespace Drjele\Symfony\Phpunit\Mock;
 
 use Doctrine\Persistence\ManagerRegistry;
-use Drjele\SymfonyPhpunit\Contract\MockDtoInterface;
-use Drjele\SymfonyPhpunit\MockDto;
+use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
+use Drjele\Symfony\Phpunit\MockDto;
 use Mockery\MockInterface;
 
 class ManagerRegistryMock implements MockDtoInterface

@@ -6,9 +6,9 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\SymfonyPhpunit\Contract;
+namespace Drjele\Symfony\Phpunit\Contract;
 
-use Drjele\SymfonyPhpunit\MockDto;
+use Drjele\Symfony\Phpunit\MockDto;
 
 interface MockDtoInterface
 {

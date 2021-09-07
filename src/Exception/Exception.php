@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\SymfonyPhpunit\Exception;
+namespace Drjele\Symfony\Phpunit\Exception;
 
 class Exception extends \Exception
 {

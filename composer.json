@@ -27,7 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Drjele\\SymfonyPhpunit\\": "src/"
+            "Drjele\\Symfony\\Phpunit\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drjele\\Symfony\\Phpunit\\Test\\": "tests/"
         }
     },
     "scripts": {

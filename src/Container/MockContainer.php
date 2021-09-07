@@ -6,11 +6,11 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\SymfonyPhpunit\Container;
+namespace Drjele\Symfony\Phpunit\Container;
 
-use Drjele\SymfonyPhpunit\Contract\MockDtoInterface;
-use Drjele\SymfonyPhpunit\Exception\Exception;
-use Drjele\SymfonyPhpunit\MockDto;
+use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
+use Drjele\Symfony\Phpunit\Exception\Exception;
+use Drjele\Symfony\Phpunit\MockDto;
 use Mockery;
 use Mockery\MockInterface;
 

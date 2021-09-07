@@ -6,10 +6,10 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\SymfonyPhpunit\TestCase;
+namespace Drjele\Symfony\Phpunit\TestCase;
 
-use Drjele\SymfonyPhpunit\Container\MockContainerTrait;
-use Drjele\SymfonyPhpunit\Contract\MockDtoInterface;
+use Drjele\Symfony\Phpunit\Container\MockContainerTrait;
+use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestCase extends TestCase implements MockDtoInterface
