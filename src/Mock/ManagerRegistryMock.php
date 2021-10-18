@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Drjele\Symfony\Phpunit\Mock;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
 use Drjele\Symfony\Phpunit\MockDto;
@@ -22,45 +23,47 @@ class ManagerRegistryMock implements MockDtoInterface
             [],
             false,
             function (MockInterface $mock): void {
+                $entityManagerMock = \Mockery::mock(EntityManagerInterface::class);
+
+                $entityManagerMock->shouldReceive('beginTransaction')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('persist')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('remove')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('flush')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('commit')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('rollback')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('getClassMetadata')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('setIdGeneratorType')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock->shouldReceive('setIdGenerator')
+                    ->byDefault()
+                    ->andReturnSelf();
+
                 $mock->shouldReceive('getManager')
                     ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('beginTransaction')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('persist')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('remove')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('flush')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('commit')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('rollback')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('getClassMetaData')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('setIdGeneratorType')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $mock->shouldReceive('setIdGenerator')
-                    ->byDefault()
-                    ->andReturnSelf();
+                    ->andReturn($entityManagerMock);
             }
         );
     }
