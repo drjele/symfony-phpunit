@@ -10,8 +10,10 @@ namespace Drjele\Symfony\Phpunit\Mock;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\Mapping\ClassMetadata;
 use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
 use Drjele\Symfony\Phpunit\MockDto;
+use Mockery;
 use Mockery\MockInterface;
 
 class ManagerRegistryMock implements MockDtoInterface
@@ -23,7 +25,17 @@ class ManagerRegistryMock implements MockDtoInterface
             [],
             false,
             function (MockInterface $mock): void {
-                $entityManagerMock = \Mockery::mock(EntityManagerInterface::class);
+                $classMetadataMock = Mockery::mock(ClassMetadata::class);
+
+                $classMetadataMock->shouldReceive('setIdGeneratorType')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $classMetadataMock->shouldReceive('setIdGenerator')
+                    ->byDefault()
+                    ->andReturnSelf();
+
+                $entityManagerMock = Mockery::mock(EntityManagerInterface::class);
 
                 $entityManagerMock->shouldReceive('beginTransaction')
                     ->byDefault()
@@ -51,15 +63,7 @@ class ManagerRegistryMock implements MockDtoInterface
 
                 $entityManagerMock->shouldReceive('getClassMetadata')
                     ->byDefault()
-                    ->andReturnSelf();
-
-                $entityManagerMock->shouldReceive('setIdGeneratorType')
-                    ->byDefault()
-                    ->andReturnSelf();
-
-                $entityManagerMock->shouldReceive('setIdGenerator')
-                    ->byDefault()
-                    ->andReturnSelf();
+                    ->andReturn($classMetadataMock);
 
                 $mock->shouldReceive('getManager')
                     ->byDefault()
