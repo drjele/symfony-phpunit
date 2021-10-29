@@ -61,6 +61,14 @@ class ManagerRegistryMock implements MockDtoInterface
                     ->byDefault()
                     ->andReturnSelf();
 
+                $entityManagerMock->shouldReceive('getReference')
+                    ->byDefault()
+                    ->andReturnUsing(
+                        function(string $className): object {
+                            return new $className;
+                        }
+                    );
+
                 $entityManagerMock->shouldReceive('getClassMetadata')
                     ->byDefault()
                     ->andReturn($classMetadataMock);
