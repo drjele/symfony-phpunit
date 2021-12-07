@@ -100,7 +100,7 @@ class MockContainer
         }
 
         if (null !== $mockDto->getOnCreate()) {
-            $mockDto->getOnCreate()($mock);
+            $mockDto->getOnCreate()($mock, $this);
         }
 
         return $mock;

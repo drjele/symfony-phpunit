@@ -12,9 +12,9 @@ use Closure;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\Mapping\ClassMetadata;
+use Drjele\Symfony\Phpunit\Container\MockContainer;
 use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
 use Drjele\Symfony\Phpunit\MockDto;
-use Mockery;
 use Mockery\MockInterface;
 
 class ManagerRegistryMock implements MockDtoInterface
@@ -31,78 +31,92 @@ class ManagerRegistryMock implements MockDtoInterface
 
     public static function getOnCreate(): Closure
     {
-        return function (MockInterface $mock): void {
+        return function (MockInterface $mock, MockContainer $container): void {
             $mock->shouldReceive('getManager')
                 ->byDefault()
-                ->andReturn(static::getEntityManagerMock());
+                ->andReturn(static::getEntityManagerMock($container));
         };
     }
 
-    public static function getClassMetadataMock(): MockInterface
+    public static function getEntityManagerMock(MockContainer $container): MockInterface
     {
-        $classMetadataMock = Mockery::mock(ClassMetadata::class);
+        $container->registerMockDto(
+            new MockDto(
+                EntityManagerInterface::class,
+                [],
+                false,
+                function (MockInterface $mock, MockContainer $container): void {
+                    $mock->shouldReceive('beginTransaction')
+                        ->byDefault()
+                        ->andReturnSelf();
 
-        $classMetadataMock->shouldReceive('setIdGeneratorType')
-            ->byDefault()
-            ->andReturnSelf();
+                    $mock->shouldReceive('persist')
+                        ->byDefault()
+                        ->andReturnSelf();
 
-        $classMetadataMock->shouldReceive('setIdGenerator')
-            ->byDefault()
-            ->andReturnSelf();
+                    $mock->shouldReceive('remove')
+                        ->byDefault()
+                        ->andReturnSelf();
 
-        return $classMetadataMock;
+                    $mock->shouldReceive('flush')
+                        ->byDefault()
+                        ->andReturnSelf();
+
+                    $mock->shouldReceive('commit')
+                        ->byDefault()
+                        ->andReturnSelf();
+
+                    $mock->shouldReceive('rollback')
+                        ->byDefault()
+                        ->andReturnSelf();
+
+                    $mock->shouldReceive('clear')
+                        ->byDefault()
+                        ->andReturnSelf();
+
+                    $mock->shouldReceive('getReference')
+                        ->byDefault()
+                        ->andReturnUsing(
+                            function (string $className, string|int $id): object {
+                                $object = new $className();
+
+                                if (\method_exists($object, 'setId')) {
+                                    $object->setId($id);
+                                }
+
+                                return $object;
+                            }
+                        );
+
+                    $mock->shouldReceive('getClassMetadata')
+                        ->byDefault()
+                        ->andReturn(static::getClassMetadataMock($container));
+                }
+            )
+        );
+
+        return $container->getMock(EntityManagerInterface::class);
     }
 
-    public static function getEntityManagerMock(): MockInterface
+    public static function getClassMetadataMock(MockContainer $container): MockInterface
     {
-        $entityManagerMock = Mockery::mock(EntityManagerInterface::class);
+        $container->registerMockDto(
+            new MockDto(
+                ClassMetadata::class,
+                [],
+                false,
+                function (MockInterface $mock, MockContainer $container): void {
+                    $mock->shouldReceive('setIdGeneratorType')
+                        ->byDefault()
+                        ->andReturnSelf();
 
-        $entityManagerMock->shouldReceive('beginTransaction')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('persist')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('remove')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('flush')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('commit')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('rollback')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('clear')
-            ->byDefault()
-            ->andReturnSelf();
-
-        $entityManagerMock->shouldReceive('getReference')
-            ->byDefault()
-            ->andReturnUsing(
-                function (string $className, string|int $id): object {
-                    $object = new $className();
-
-                    if (\method_exists($object, 'setId')) {
-                        $object->setId($id);
-                    }
-
-                    return $object;
+                    $mock->shouldReceive('setIdGenerator')
+                        ->byDefault()
+                        ->andReturnSelf();
                 }
-            );
+            )
+        );
 
-        $entityManagerMock->shouldReceive('getClassMetadata')
-            ->byDefault()
-            ->andReturn(static::getClassMetadataMock());
-
-        return $entityManagerMock;
+        return $container->getMock(ClassMetadata::class);
     }
 }

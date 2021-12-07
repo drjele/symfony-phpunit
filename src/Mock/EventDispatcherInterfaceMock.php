@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Drjele\Symfony\Phpunit\Mock;
 
 use Closure;
+use Drjele\Symfony\Phpunit\Container\MockContainer;
 use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
 use Drjele\Symfony\Phpunit\MockDto;
 use Mockery\MockInterface;
@@ -28,7 +29,7 @@ class EventDispatcherInterfaceMock implements MockDtoInterface
 
     public static function getOnCreate(): Closure
     {
-        return function (MockInterface $mock): void {
+        return function (MockInterface $mock, MockContainer $container): void {
             $mock->shouldReceive('dispatch')
                 ->byDefault()
                 ->andReturnSelf();
