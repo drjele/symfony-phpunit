@@ -8,8 +8,8 @@ declare(strict_types=1);
 
 namespace Drjele\Symfony\Phpunit\TestCase;
 
-use Drjele\Symfony\Phpunit\Container\MockContainerTrait;
 use Drjele\Symfony\Phpunit\Contract\MockDtoInterface;
+use Drjele\Symfony\Phpunit\TestCase\Traits\MockContainerTrait;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestCase extends TestCase implements MockDtoInterface
