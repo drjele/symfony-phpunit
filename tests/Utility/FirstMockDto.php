@@ -12,28 +12,28 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-class TestMockDto
+class FirstMockDto
 {
-    private SecondTestMockDto $secondTestMockDto;
+    private SecondMockDto $secondMockDto;
     private EventDispatcherInterface $eventDispatcher;
     private ManagerRegistry $managerRegistry;
     private SluggerInterface $slugger;
 
     public function __construct(
-        SecondTestMockDto $secondTestMockDto,
+        SecondMockDto $secondMockDto,
         EventDispatcherInterface $eventDispatcher,
         ManagerRegistry $managerRegistry,
         SluggerInterface $slugger
     ) {
-        $this->secondTestMockDto = $secondTestMockDto;
+        $this->secondMockDto = $secondMockDto;
         $this->eventDispatcher = $eventDispatcher;
         $this->managerRegistry = $managerRegistry;
         $this->slugger = $slugger;
     }
 
-    public function getSecondTestMockDto(): SecondTestMockDto
+    public function getSecondMockDto(): SecondMockDto
     {
-        return $this->secondTestMockDto;
+        return $this->secondMockDto;
     }
 
     public function getEventDispatcher(): EventDispatcherInterface

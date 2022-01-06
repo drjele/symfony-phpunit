@@ -29,7 +29,7 @@ class EventDispatcherInterfaceMock implements MockDtoInterface
 
     public static function getOnCreate(): Closure
     {
-        return function (MockInterface $mock, MockContainer $container): void {
+        return function (MockInterface $mock, MockContainer $mockContainer): void {
             $mock->shouldReceive('dispatch')
                 ->byDefault()
                 ->andReturnSelf();

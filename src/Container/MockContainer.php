@@ -22,7 +22,9 @@ class MockContainer
     public function registerMockDto(MockDto $mockDto): self
     {
         if (isset($this->mockDtos[$mockDto->getClass()])) {
-            throw new Exception(\sprintf('mock dto already registered for class `%s`', $mockDto->getClass()));
+            throw new Exception(
+                \sprintf('mock dto already registered for class `%s`', $mockDto->getClass())
+            );
         }
 
         $this->mockDtos[$mockDto->getClass()] = $mockDto;
@@ -46,7 +48,9 @@ class MockContainer
     public function registerMock(string $class, MockInterface $mock): self
     {
         if (isset($this->mocks[$class])) {
-            throw new Exception(\sprintf('mock already registered for class `%s`', $class));
+            throw new Exception(
+                \sprintf('mock already registered for class `%s`', $class)
+            );
         }
 
         $this->mocks[$class] = $mock;
@@ -57,6 +61,7 @@ class MockContainer
     public function close(): void
     {
         $this->mockDtos = [];
+        $this->mocks = [];
 
         Mockery::close();
     }
