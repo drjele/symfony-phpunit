@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Drjele\Symfony\Phpunit\Mock;
 
 use Closure;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\Mapping\ClassMetadata;
@@ -91,6 +92,10 @@ class ManagerRegistryMock implements MockDtoInterface
                     $mock->shouldReceive('getClassMetadata')
                         ->byDefault()
                         ->andReturn(static::getClassMetadataMock($mockContainer));
+
+                    $mock->shouldReceive('getConnection')
+                        ->byDefault()
+                        ->andReturn(static::getConnectionMock($mockContainer));
                 }
             )
         );
@@ -118,5 +123,23 @@ class ManagerRegistryMock implements MockDtoInterface
         );
 
         return $mockContainer->getMock(ClassMetadata::class);
+    }
+
+    public static function getConnectionMock(MockContainer $mockContainer): MockInterface
+    {
+        $mockContainer->registerMockDto(
+            new MockDto(
+                Connection::class,
+                [],
+                false,
+                function (MockInterface $mock, MockContainer $mockContainer): void {
+                    $mock->shouldReceive('executeStatement')
+                        ->byDefault()
+                        ->andReturn(1);
+                }
+            )
+        );
+
+        return $mockContainer->getMock(Connection::class);
     }
 }
