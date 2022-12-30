@@ -48,10 +48,10 @@ git clone git@gitlab.com:drjele-symfony/phpunit.git
 cd phpunit/scripts/docker/
 
 # the next instructions allow to run git from inside the container
-cp ~/.ssh/id_* shared/.ssh/
+cp ~/.ssh/id_* ./
 NAME="your-name" &&
   EMAIL="your-email" &&
-  CONFIG=('#!/bin/bash' 'if command -v git &> /dev/null; then' "git config --global user.name \"${NAME}\"" "git config --global user.email \"${EMAIL}\"" 'fi') && printf '%s\n' "${CONFIG[@]}" >>shared/.profile/.profile_local
+  CONFIG=('#!/bin/bash' 'if command -v git &> /dev/null; then' "    git config --global user.name \"${NAME}\"" "    git config --global user.email \"${EMAIL}\"" 'fi') && printf '%s\n' "${CONFIG[@]}" >> ./.profile_local
 
 docker-compose build && docker-compose up -d
 docker-compose exec php sh
