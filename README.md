@@ -46,10 +46,12 @@ final class CreateServiceTest extends AbstractTestCase
 ```shell
 git clone git@gitlab.com:drjele-symfony/phpunit.git
 cd phpunit/scripts/docker/
-cp ~/.ssh/id_* ./
 
-echo 'git config --global user.name "<your name>"' >> ./.profile_personal && \
-echo 'git config --global user.email "<your email>"' >> ./.profile_personal
+# the next instructions allow to run git from inside the container
+cp ~/.ssh/id_* shared/.ssh/
+NAME="your-name" &&
+  EMAIL="your-email" &&
+  CONFIG=('#!/bin/bash' 'if command -v git &> /dev/null; then' "git config --global user.name \"${NAME}\"" "git config --global user.email \"${EMAIL}\"" 'fi') && printf '%s\n' "${CONFIG[@]}" >>shared/.profile/.profile_local
 
 docker-compose build && docker-compose up -d
 docker-compose exec php sh

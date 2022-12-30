@@ -16,7 +16,9 @@ use Mockery\MockInterface;
 
 class MockContainer
 {
+    /** @var array<string, MockDto> */
     private array $mockDtos = [];
+    /** @var array<string, MockInterface> */
     private array $mocks = [];
 
     public function registerMockDto(MockDto $mockDto): self

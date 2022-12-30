@@ -10,12 +10,13 @@ namespace Drjele\Symfony\Phpunit\TestCase\Traits;
 
 use Drjele\Symfony\Phpunit\Container\MockContainer;
 use Drjele\Symfony\Phpunit\MockDto;
+use Mockery\MockInterface;
 
 trait MockContainerTrait
 {
     private ?MockContainer $mockContainer = null;
 
-    protected function get(string $class)
+    protected function get(string $class): MockInterface
     {
         return $this->mockContainer->getMock($class);
     }
