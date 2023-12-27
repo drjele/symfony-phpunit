@@ -45,6 +45,8 @@ check_container() {
     PHP_IS_INSTALLED=$?
 
     if [[ "${PHP_IS_INSTALLED}" -ne 0 ]]; then
+        println ""
+
         print_error "the dev container is not running"
 
         println ""
@@ -70,8 +72,6 @@ println ""
 print_command "staged files start"
 println "${STAGED_FILES}"
 print_command "staged files end"
-
-println ""
 
 check_container
 
