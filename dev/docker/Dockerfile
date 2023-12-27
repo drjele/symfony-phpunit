@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.2-cli-alpine
 
 ARG CONFIG_PATH
 ARG USER_ID
@@ -13,7 +13,7 @@ ENV WORKDIR=${WORKDIR}
 COPY ${CONFIG_PATH}/.profile* ${HOME}/
 ENV ENV="${HOME}/.profile"
 
-RUN apk add --no-cache shadow bash
+RUN apk add --no-cache shadow bash git
 
 RUN rm -rf /tmp/*
 
