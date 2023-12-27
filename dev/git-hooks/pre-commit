@@ -46,6 +46,9 @@ check_container() {
 
     if [[ "${PHP_IS_INSTALLED}" -ne 0 ]]; then
         print_error "the dev container is not running"
+
+        println ""
+
         stop 1
     fi
 }
@@ -74,8 +77,6 @@ check_container
 
 STAGED_FILES_PHP=$(git diff --cached --name-only --diff-filter=ACMR HEAD | grep \\.php)
 if [[ "${STAGED_FILES_PHP}" != "" ]]; then
-    println ""
-
     lint "${STAGED_FILES_PHP}"
 
     println ""
