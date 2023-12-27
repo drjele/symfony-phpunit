@@ -25,3 +25,7 @@ print_error() {
 println() {
     printf %b "$1\n"
 }
+
+run_in_container() {
+    ./dc exec -T php "$@"
+}
