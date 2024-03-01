@@ -8,6 +8,4 @@ declare(strict_types=1);
 
 namespace Drjele\Symfony\Phpunit\Test\Utility;
 
-class SecondMockDto
-{
-}
+class SecondMockDto {}
