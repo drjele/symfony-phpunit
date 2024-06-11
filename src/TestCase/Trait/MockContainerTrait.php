@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Copyright (c) Adrian Jeledintan
  */
 
-namespace Drjele\Symfony\Phpunit\TestCase\Traits;
+namespace Drjele\Symfony\Phpunit\TestCase\Trait;
 
 use Drjele\Symfony\Phpunit\Container\MockContainer;
 use Drjele\Symfony\Phpunit\MockDto;
